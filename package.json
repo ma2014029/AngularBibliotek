@@ -1,6 +1,6 @@
 {
-  "name": "bibliotek",
-  "version": "0.0.0",
+  "name": "Bibliotek",
+  "version": "1.3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -16,9 +16,13 @@
     "@angular/compiler": "~10.1.0",
     "@angular/core": "~10.1.0",
     "@angular/forms": "~10.1.0",
+    "@angular/http": "^7.2.16",
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

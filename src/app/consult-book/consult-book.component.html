@@ -1,0 +1,285 @@
+<nav id= gBar class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand">
+      <img src="../../assets/Logo_B_Bar.png" width="60" height="60">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/presentacion">Presentación</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link disabled" routerLinkActive="active" routerLink="/estadisticas">Estadísticas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/acercaDe">Acerca de</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Consultas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/admin/search">Busqueda Libro/Revista</a>
+            <a class="dropdown-item" href="/admin/CRUDbook">Libros</a>
+            <a class="dropdown-item" href="/admin/report">Reportes</a>
+            <a class="dropdown-item" routerLink="/admin/CRUDmagazine">Revistas</a>
+            <a class="dropdown-item" routerLink="/admin/CRUDuser">Usuarios</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button id="btnLog" type="button" class="btn btn-outline-dark"data-target="#staticBackdrop" routerLink="/presentacion">Cerrar Sesión</button>
+  </nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Libros</h1>
+        <img id="add" type="button"src="../../assets/agregar.png" width="50" alt="agregar" data-toggle="modal" data-target="#exampleModal">
+
+        <table>
+          <tr>
+          <th>ID</th>
+          <th>Autor</th>
+          <th>Título</th>
+          <th>Edición</th>
+          <th>Palabras Clave</th>
+          <th>Descripción</th>
+          <th>Temas</th>
+          <th>Copias</th>
+          <th>Disponibles</th>
+          <th>Opciones</th>
+          </tr>
+          <tr 
+          *ngFor="let book of bookArray" (click)="openEdit(book)" class="data-group" >
+            <th>{{book.id}}</th>
+            <th>{{book.autor}}</th>
+            <th>{{book.titulo}}</th>
+            <th>{{book.edicion}}</th>
+            <th>{{book.palabrasClave}}</th>
+            <th>{{book.descripcion}}</th>
+            <th>{{book.temas}}</th>
+            <th>{{book.copias}}</th>
+            <th>{{book.disponibles}}</th>
+            <th><img src="../../assets/mostrar.png" width="25" alt="ver" data-toggle="modal" data-target="#Modalsee">
+              <img src="../../assets/editar.png" width="25" alt="editar" data-toggle="modal" data-target="#Modaledit">
+              <img src="../../assets/eliminar.png" width="25" alt="eliminar" data-toggle="modal" data-target="#Modaldelete">
+          </tr>
+        </table>
+
+    </div>
+</div>
+<!-- Modal Agregar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"> 
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Autor</label>
+            <input type="text" [(ngModel)]= "selectedBook.autor" name="autor" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Título</label>
+            <input type="text" [(ngModel)]="selectedBook.titulo" name="titulo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Edición</label>
+            <input type="text" [(ngModel)]="selectedBook.edicion"  name="edicion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Palabras Clave</label>
+            <input type="text" [(ngModel)]="selectedBook.palabrasClave"  name="palabrasClave" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" [(ngModel)]="selectedBook.descripcion"  name="descripcion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Temas</label>
+            <input type="text" [(ngModel)]="selectedBook.temas"  name="temas" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Copias</label>
+            <input type="text" [(ngModel)]="selectedBook.copias"  name="copias" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Disponibles</label>
+            <input type="text" [(ngModel)]="selectedBook.disponibles"  name="disponibles" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button (click)="limpiar()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button (click)="add()" class="btn btn-dark">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar-->
+<div class="modal fade" id="Modaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"> 
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Autor</label>
+            <input type="text" [(ngModel)]= "selectedBook.autor" name="autor" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Título</label>
+            <input type="text" [(ngModel)]="selectedBook.titulo" name="titulo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Edición</label>
+            <input type="text" [(ngModel)]="selectedBook.edicion"  name="edicion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Palabras Clave</label>
+            <input type="text" [(ngModel)]="selectedBook.palabrasClave"  name="palabrasClave" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" [(ngModel)]="selectedBook.descripcion"  name="descripcion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Temas</label>
+            <input type="text" [(ngModel)]="selectedBook.temas"  name="temas" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Copias</label>
+            <input type="text" [(ngModel)]="selectedBook.copias"  name="copias" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Disponibles</label>
+            <input type="text" [(ngModel)]="selectedBook.disponibles"  name="disponibles" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button (click)="limpiar()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button (click)="add()" class="btn btn-dark">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Mostrar-->
+<div class="modal fade" id="Modalsee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"> 
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mostrar Libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Autor</label>
+            <input type="text" [(ngModel)]= "selectedBook.autor" name="autor" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Título</label>
+            <input type="text" [(ngModel)]="selectedBook.titulo" name="titulo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Edición</label>
+            <input type="text" [(ngModel)]="selectedBook.edicion"  name="edicion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Palabras Clave</label>
+            <input type="text" [(ngModel)]="selectedBook.palabrasClave"  name="palabrasClave" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" [(ngModel)]="selectedBook.descripcion"  name="descripcion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Temas</label>
+            <input type="text" [(ngModel)]="selectedBook.temas"  name="temas" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Copias</label>
+            <input type="text" [(ngModel)]="selectedBook.copias"  name="copias" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Disponibles</label>
+            <input type="text" [(ngModel)]="selectedBook.disponibles"  name="disponibles" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Eliminar-->
+<div class="modal fade" id="Modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"> 
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Autor</label>
+            <input type="text" [(ngModel)]= "selectedBook.autor" name="autor" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Título</label>
+            <input type="text" [(ngModel)]="selectedBook.titulo" name="titulo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Edición</label>
+            <input type="text" [(ngModel)]="selectedBook.edicion"  name="edicion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Palabras Clave</label>
+            <input type="text" [(ngModel)]="selectedBook.palabrasClave"  name="palabrasClave" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" [(ngModel)]="selectedBook.descripcion"  name="descripcion" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Temas</label>
+            <input type="text" [(ngModel)]="selectedBook.temas"  name="temas" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Copias</label>
+            <input type="text" [(ngModel)]="selectedBook.copias"  name="copias" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Disponibles</label>
+            <input type="text" [(ngModel)]="selectedBook.disponibles"  name="disponibles" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button (click)="delete()" class="btn btn-dark">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div> 

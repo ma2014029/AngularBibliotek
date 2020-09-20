@@ -1,0 +1,9 @@
+.jumbotron, .container{
+    background-color: #EBF5F7;
+}
+.nav-link, #myTabContent{
+    color: black;
+    font-weight: bold;
+    font-family:"Times New Roman";
+    font-size: 17px;
+}

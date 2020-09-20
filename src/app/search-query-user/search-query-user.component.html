@@ -1,0 +1,304 @@
+<nav id= gBar class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" >
+      <img src="../../assets/Logo_B_Bar.png" width="60" height="60">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/presentacion">Presentación</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link disabled" routerLinkActive="active" routerLink="/estadisticas">Estadísticas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/acercaDe">Acerca de</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Consultas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/user/search">Busqueda Libro/Revista</a>
+            <a class="dropdown-item" href="/user/giveBack">Devolver Libro/Revista</a>
+            <a class="dropdown-item" href="/user/loanHistory">Historial de Libro/Revista</a>
+            <a class="dropdown-item" href="/user/profile">Perfil</a>
+            <a class="dropdown-item" href="/user/loan">Préstamos Libro/Revista</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button id="btnLog" type="button" class="btn btn-outline-dark"data-target="#staticBackdrop" routerLink="/presentacion">Cerrar Sesión</button>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Busqueda</h1>
+
+      <div class="content-select">
+        <p>Buscar:
+          <button id="btnB" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#busqueda1" href="#busqueda1" aria-expanded="false" aria-controls="busqueda1">Libro</button>
+          <button id="btnR" type="button" class="btn btn-outline-dark"  data-toggle="collapse" data-target="#busqueda2" href="#busqueda2" aria-expanded="false" aria-controls="busqueda2">Revista</button>
+        </p>
+      </div>
+      <div class="collapse multi-collapse" id="busqueda1">
+        <div class="card card-body">
+          <div class="content-select">
+            <p>Seleccione tipo de Búsqueda en Libros: </p>
+              <button id="btnB" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#Tlibros" href="#Tlibros" aria-expanded="false" aria-controls="Tlibros">Título</button>
+              <button id="btnR" type="button" class="btn btn-outline-dark"  data-toggle="collapse" data-target="#Plibros" href="#Plibros" aria-expanded="false" aria-controls="Plibros">Palabra Clave</button>
+        </div>
+        </div>
+
+
+      </div>
+      <div class="collapse multi-collapse" id="busqueda2">
+        <div class="card card-body">
+          <div class="content-select">
+            <p>Seleccione tipo de Búsqueda en Revistas: </p>
+              <button id="btnB" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#Trevistas" href="#Trevistas" aria-expanded="false" aria-controls="Trevistas">Título</button>
+              <button id="btnR" type="button" class="btn btn-outline-dark"  data-toggle="collapse" data-target="#Previstas" href="#Previstas" aria-expanded="false" aria-controls="Previstas">Palabra Clave</button>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+
+          <div class="collapse multi-collapse" id="Tlibros">
+            <div class="card card-body">
+              <div class="row">
+                <div class="col2">
+                  <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Ingrese Título de Libro" [(ngModel)]="data.selectedBook.titulo" name="titulo">
+                    </div>
+                  </form>
+                </div>
+  
+                <div class="col2">
+                  <button id="Bs" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#RbusLT" href="#RbusLT" aria-expanded="false" aria-controls="RbusLT" (click)="buscar()">Buscar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="collapse multi-collapse" id="Plibros">
+            <div class="card card-body">
+              <div class="row">
+                <div class="col2">
+                  <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingrese Palabra Clave de Libro">
+                    </div>
+                  </form>
+                </div>
+                <div class="col2">
+                  <button id="Bs" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#RbusLP" href="#RbusLP" aria-expanded="false" aria-controls="RbusLP">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="collapse multi-collapse" id="Trevistas">
+            <div class="card card-body">
+              <div class="row">
+                <div class="col2">
+                  <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Ingrese Título de Revista">
+                    </div>
+                  </form>
+                </div>
+                <div class="col2">
+                  <button id="Bs" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#RbusRT" href="#RbusRT" aria-expanded="false" aria-controls="RbusRT">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="collapse multi-collapse" id="Previstas">
+            <div class="card card-body">
+              <div class="row">
+                <div class="col2">
+                  <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Ingrese palabra clave de Revista">
+                    </div>
+                  </form>
+                </div>
+                <div class="col2">
+                  <button id="Bs" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#RbusRP" href="#RbusRP" aria-expanded="false" aria-controls="RbusRP">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Tablas de Busqueda-->
+          <div class="collapse multi-collapse" id="RbusLT">
+            <div class="card card-body">
+              <div class="content-selectT">
+                <table>
+                  <tr>
+                  <th>ID</th>
+                  <th>Autor</th>
+                  <th>Título</th>
+                  <th>Edición</th>
+                  <th>Palabras Clave</th>
+                  <th>Descripción</th>
+                  <th>Temas</th>
+                  <th>Copias</th>
+                  <th>Disponibles</th>
+                  <th>Opciones</th>
+                  </tr>
+                  <tr 
+                  *ngFor="let book of buscar()" class="data-group" >
+                    <th>{{book.id}}</th>
+                    <th>{{book.autor}}</th>
+                    <th>{{book.titulo}}</th>
+                    <th>{{book.edicion}}</th>
+                    <th>{{book.palabrasClave}}</th>
+                    <th>{{book.descripcion}}</th>
+                    <th>{{book.temas}}</th>
+                    <th>{{book.copias}}</th>
+                    <th>{{book.disponibles}}</th>
+                    <th>
+                      <img src="../../assets/mostrar.png" width="25" alt="ver" data-toggle="modal" data-target="#Modalsee">
+                      <img src="../../assets/editar.png" width="25" alt="editar" data-toggle="modal" data-target="#Modaledit">
+                      <img src="../../assets/eliminar.png" width="25" alt="eliminar" data-toggle="modal" data-target="#Modaldelete">
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <div class="collapse multi-collapse" id="RbusLP">
+            <div class="card card-body">
+              <div class="content-selectT">
+                <table>
+                  <tr>
+                  <th>ID</th>
+                  <th>Autor</th>
+                  <th>Título</th>
+                  <th>Edición</th>
+                  <th>Palabras Clave</th>
+                  <th>Descripción</th>
+                  <th>Temas</th>
+                  <th>Copias</th>
+                  <th>Disponibles</th>
+                  <th>Opciones</th>
+                  </tr>
+                  <tr 
+                  *ngFor="let book of data.bookArray" class="data-group" >
+                    <th>{{book.id}}</th>
+                    <th>{{book.autor}}</th>
+                    <th>{{book.titulo}}</th>
+                    <th>{{book.edicion}}</th>
+                    <th>{{book.palabrasClave}}</th>
+                    <th>{{book.descripcion}}</th>
+                    <th>{{book.temas}}</th>
+                    <th>{{book.copias}}</th>
+                    <th>{{book.disponibles}}</th>
+                    <th>
+                      <img src="../../assets/mostrar.png" width="25" alt="ver" data-toggle="modal" data-target="#Modalsee">
+                      <img src="../../assets/editar.png" width="25" alt="editar" data-toggle="modal" data-target="#Modaledit">
+                      <img src="../../assets/eliminar.png" width="25" alt="eliminar" data-toggle="modal" data-target="#Modaldelete">
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="collapse multi-collapse" id="RbusRT">
+            <div class="card card-body">
+              <div class="content-selectT">
+                <table>
+                  <tr>
+                  <th>ID</th>
+                  <th>Autor</th>
+                  <th>Título</th>
+                  <th>Edición</th>
+                  <th>Descripción</th>
+                  <th>Frecuencia Actual</th>
+                  <th>Ejemplares</th>
+                  <th>Temas</th>
+                  <th>Palabras Clave</th>
+                  <th>Copias</th>
+                  <th>Disponibles</th>
+                  <th>Opciones</th>
+                  </tr>
+                  <tr 
+                  *ngFor="let maga of data2.magaArray" class="data-group" >
+                    <th>{{maga.id}}</th>
+                    <th>{{maga.autor}}</th>
+                    <th>{{maga.titulo}}</th>
+                    <th>{{maga.edicion}}</th>
+                    <th>{{maga.descripcion}}</th>
+                    <th>{{maga.frecuencia_Actual}}</th>
+                    <th>{{maga.ejemplares}}</th>
+                    <th>{{maga.temas}}</th>
+                    <th>{{maga.palabrasClave}}</th>
+                    <th>{{maga.copias}}</th>
+                    <th>{{maga.disponibles}}</th>
+                    <th>
+                      <img src="../../assets/mostrar.png" width="25" alt="ver" data-toggle="modal" data-target="#Modalsee">
+                      <img src="../../assets/editar.png" width="25" alt="editar" data-toggle="modal" data-target="#Modaledit">
+                      <img src="../../assets/eliminar.png" width="25" alt="eliminar" data-toggle="modal" data-target="#Modaldelete">
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <div class="collapse multi-collapse" id="RbusRP">
+            <div class="card card-body">
+              <div class="content-selectT">
+                <table>
+                <tr>
+                  <th>ID</th>
+                  <th>Autor</th>
+                  <th>Título</th>
+                  <th>Edición</th>
+                  <th>Descripción</th>
+                  <th>Frecuencia Actual</th>
+                  <th>Ejemplares</th>
+                  <th>Temas</th>
+                  <th>Palabras Clave</th>
+                  <th>Copias</th>
+                  <th>Disponibles</th>
+                  <th>Opciones</th>
+                  </tr>
+                  <tr 
+                  *ngFor="let maga of data2.magaArray" class="data-group" >
+                    <th>{{maga.id}}</th>
+                    <th>{{maga.autor}}</th>
+                    <th>{{maga.titulo}}</th>
+                    <th>{{maga.edicion}}</th>
+                    <th>{{maga.descripcion}}</th>
+                    <th>{{maga.frecuencia_Actual}}</th>
+                    <th>{{maga.ejemplares}}</th>
+                    <th>{{maga.temas}}</th>
+                    <th>{{maga.palabrasClave}}</th>
+                    <th>{{maga.copias}}</th>
+                    <th>{{maga.disponibles}}</th>
+                    <th>
+                      <img src="../../assets/mostrar.png" width="25" alt="ver" data-toggle="modal" data-target="#Modalsee">
+                      <img src="../../assets/editar.png" width="25" alt="editar" data-toggle="modal" data-target="#Modaledit">
+                      <img src="../../assets/eliminar.png" width="25" alt="eliminar" data-toggle="modal" data-target="#Modaldelete">
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

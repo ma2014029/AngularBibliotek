@@ -1,0 +1,87 @@
+<nav id= gBar class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" >
+      <img src="../../assets/Logo_B_Bar.png" width="60" height="60">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/presentacion">Presentación</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link disabled" routerLinkActive="active" routerLink="/estadisticas">Estadísticas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/acercaDe">Acerca de</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Consultas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/user/search">Busqueda Libro/Revista</a>
+            <a class="dropdown-item" href="/user/giveBack">Devolver Libro/Revista</a>
+            <a class="dropdown-item" href="/user/loanHistory">Historial de Libro/Revista</a>
+            <a class="dropdown-item" href="/user/profile">Perfil</a>
+            <a class="dropdown-item" href="/user/loan">Préstamos Libro/Revista</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button id="btnLog" type="button" class="btn btn-outline-dark"data-target="#staticBackdrop" routerLink="/presentacion">Cerrar Sesión</button>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Devolver Préstamo</h1>
+      <div class="content-select">
+        <p id="b1">Tipo:
+          <button id="btnB" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#busqueda1" href="#busqueda1" aria-expanded="false" aria-controls="busqueda1">Libro</button>
+          <button id="btnR" type="button" class="btn btn-outline-dark"  data-toggle="collapse" data-target="#busqueda2" href="#busqueda2" aria-expanded="false" aria-controls="busqueda2">Revista</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse multi-collapse" id="busqueda1">
+      <div class="card card-body">
+
+        <div class="row row-cols-1 row-cols-md-3">
+          <div class="col mb-4" *ngFor="let book of data.bookArray" class="data-group">
+            <div class="card h-100">
+              <div class="card" id="c2">
+                <div class="card-body">
+                  <h5 class="card-title">{{book.titulo}}</h5>
+                  <p class="card-text">{{book.descripcion}}</p>
+                  <button id="btnP" type="button" class="btn btn-outline-dark" (click)="devolver()">Devolver</button>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+
+      </div>
+    </div>
+  
+    <div class="collapse multi-collapse" id="busqueda2">
+      <div class="card card-body">
+        
+        <div class="row row-cols-1 row-cols-md-3">
+          <div class="col mb-4" *ngFor="let book of data2.magaArray" class="data-group">
+            <div class="card h-100">
+              <div class="card" id="c2">
+                <div class="card-body">
+                  <h5 class="card-title">{{book.titulo}}</h5>
+                  <p class="card-text">{{book.descripcion}}</p>
+                  <button id="btnP" type="button" class="btn btn-outline-dark" (click)="devolver()">Devolver</button>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+
+      </div>
+    </div>
+
+</div>

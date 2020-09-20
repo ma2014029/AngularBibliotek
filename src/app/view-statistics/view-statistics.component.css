@@ -1,0 +1,26 @@
+.jumbotron{
+    background-color: rgba(169, 169, 169, 0.575);
+    width: auto;
+    height: 150vh;
+}
+#box {
+    margin-left: 27vw;
+    font-weight: bold;
+    font-family:"Times New Roman";
+}
+td{
+    width: 50%;
+}
+.t2{
+    position: relative;
+    top: 15vh;
+}
+#td2{
+    width: 22vw;
+}
+#graphic{
+    position: relative;
+    top: 25vh;
+    left: 21vw;
+    width: 40%;
+}

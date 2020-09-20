@@ -1,0 +1,119 @@
+<nav id= gBar class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" >
+      <img src="../../assets/Logo_B_Bar.png" width="60" height="60">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/presentacion">Presentación</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link disabled" routerLinkActive="active" routerLink="/estadisticas">Estadísticas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLinkActive="active" routerLink="/acercaDe">Acerca de</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Consultas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/user/search">Busqueda Libro/Revista</a>
+            <a class="dropdown-item" href="/user/giveBack">Devolver Libro/Revista</a>
+            <a class="dropdown-item" href="/user/loanHistory">Historial de Libro/Revista</a>
+            <a class="dropdown-item" href="/user/profile">Perfil</a>
+            <a class="dropdown-item" href="/user/loan">Préstamos Libro/Revista</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button id="btnLog" type="button" class="btn btn-outline-dark"data-target="#staticBackdrop" routerLink="/presentacion">Cerrar Sesión</button>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Historial de Préstamos</h1>
+  </div>
+
+  <div class="content-select">
+    <p id="b1">Tipo:
+      <button id="btnB" type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#busqueda1" href="#busqueda1" aria-expanded="false" aria-controls="busqueda1">Libro</button>
+      <button id="btnR" type="button" class="btn btn-outline-dark"  data-toggle="collapse" data-target="#busqueda2" href="#busqueda2" aria-expanded="false" aria-controls="busqueda2">Revista</button>
+    </p>
+  </div>
+
+  <div class="collapse multi-collapse" id="busqueda1">
+    <div class="card card-body">
+      <div class="card card-body">
+        <div class="content-selectT">
+          <table>
+            <tr>
+            <th>ID</th>
+            <th>Autor</th>
+            <th>Título</th>
+            <th>Edición</th>
+            <th>Palabras Clave</th>
+            <th>Descripción</th>
+            <th>Temas</th>
+            <th>Copias</th>
+            <th>Disponibles</th>
+            </tr>
+            <tr 
+            *ngFor="let book of data.bookArray" class="data-group" >
+              <th>{{book.id}}</th>
+              <th>{{book.autor}}</th>
+              <th>{{book.titulo}}</th>
+              <th>{{book.edicion}}</th>
+              <th>{{book.palabrasClave}}</th>
+              <th>{{book.descripcion}}</th>
+              <th>{{book.temas}}</th>
+              <th>{{book.copias}}</th>
+              <th>{{book.disponibles}}</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapse multi-collapse" id="busqueda2">
+    <div class="card card-body">
+      <div class="card card-body">
+        <div class="content-selectT">
+          <table>
+            <tr>
+            <th>ID</th>
+            <th>Autor</th>
+            <th>Título</th>
+            <th>Edición</th>
+            <th>Descripción</th>
+            <th>Frecuencia Actual</th>
+            <th>Ejemplares</th>
+            <th>Temas</th>
+            <th>Palabras Clave</th>
+            <th>Copias</th>
+            <th>Disponibles</th>
+            </tr>
+            <tr 
+            *ngFor="let maga of data2.magaArray" class="data-group" >
+              <th>{{maga.id}}</th>
+              <th>{{maga.autor}}</th>
+              <th>{{maga.titulo}}</th>
+              <th>{{maga.edicion}}</th>
+              <th>{{maga.descripcion}}</th>
+              <th>{{maga.frecuencia_Actual}}</th>
+              <th>{{maga.ejemplares}}</th>
+              <th>{{maga.temas}}</th>
+              <th>{{maga.palabrasClave}}</th>
+              <th>{{maga.copias}}</th>
+              <th>{{maga.disponibles}}</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

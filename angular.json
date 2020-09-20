@@ -26,7 +26,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Bibliotek"
+    }
+  },
+  "defaultProject": "Bibliotek",
+  "cli": {
+    "analytics": "d81007d6-1376-477b-b4c5-a967408540d2"
+  }
 }
